@@ -1,6 +1,7 @@
 import random
 import constants as c
 
+#creates a new matrix 
 def new_game(n):
     matrix = []
     for i in range(n):
@@ -9,7 +10,7 @@ def new_game(n):
     matrix = add_two(matrix)
     return matrix
 
-
+#add two random 2's
 def add_two(mat):
     a = random.randint(0, len(mat)-1)
     b = random.randint(0, len(mat)-1)
@@ -18,7 +19,6 @@ def add_two(mat):
         b = random.randint(0, len(mat)-1)
     mat[a][b] = 2
     return mat
-
 
 def game_state(mat):
     # check for win cell
@@ -38,10 +38,12 @@ def game_state(mat):
         for j in range(len(mat[0])-1):
             if mat[i][j] == mat[i+1][j] or mat[i][j+1] == mat[i][j]:
                 return 'not over'
-    for k in range(len(mat)-1):  # to check the left/right entries on the last row
+    # to check the left/right entries on the last row
+    for k in range(len(mat)-1):  
         if mat[len(mat)-1][k] == mat[len(mat)-1][k+1]:
             return 'not over'
-    for j in range(len(mat)-1):  # check up/down entries on last column
+    # check up/down entries on last column
+    for j in range(len(mat)-1):  
         if mat[j][len(mat)-1] == mat[j+1][len(mat)-1]:
             return 'not over'
     return 'lose'
