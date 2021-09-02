@@ -1,4 +1,4 @@
-from tkinter import *
+from tkinter import Frame, Label, CENTER, Tk
 import random
 import logic
 import constants as c
@@ -110,5 +110,7 @@ class GameGrid(Frame):
         while self.matrix[index[0]][index[1]] != 0:
             index = (gen(), gen())
         self.matrix[index[0]][index[1]] = 2
-
+window = Tk()
+window.wm_iconbitmap("1.ico")
 game_grid = GameGrid()
+window.mainloop()
