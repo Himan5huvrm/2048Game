@@ -67,7 +67,7 @@ def transpose(mat):
     return new
 
 
-def cover_up(mat):
+def compress(mat):
     new = []
     for j in range(c.GRID_LEN):
         partial_new = []
@@ -98,9 +98,9 @@ def up(game):
     print("up")
     # return matrix after shifting up
     game = transpose(game)
-    game, done = cover_up(game)
+    game, done = compress(game)
     game, done = merge(game, done)
-    game = cover_up(game)[0]
+    game = compress(game)[0]
     game = transpose(game)
     return game, done
 
@@ -108,26 +108,26 @@ def down(game):
     print("down")
     # return matrix after shifting down
     game = reverse(transpose(game))
-    game, done = cover_up(game)
+    game, done = compress(game)
     game, done = merge(game, done)
-    game = cover_up(game)[0]
+    game = compress(game)[0]
     game = transpose(reverse(game))
     return game, done
 
 def left(game):
     print("left")
     # return matrix after shifting left
-    game, done = cover_up(game)
+    game, done = compress(game)
     game, done = merge(game, done)
-    game = cover_up(game)[0]
+    game = compress(game)[0]
     return game, done
 
 def right(game):
     print("right")
     # return matrix after shifting right
     game = reverse(game)
-    game, done = cover_up(game)
+    game, done = compress(game)
     game, done = merge(game, done)
-    game = cover_up(game)[0]
+    game = compress(game)[0]
     game = reverse(game)
     return game, done
